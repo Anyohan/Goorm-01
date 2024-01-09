@@ -1,3 +1,29 @@
+## 빌드 단계 진행
+#FROM openjdk:17-ea-11-jdk-slim AS build
+#WORKDIR /usr/src/app
+#
+## 빌드에 필요한 gradle 파일 COPY
+#COPY build.gradle settings.gradle gradlew /usr/src/app/
+#COPY gradle /usr/src/app/gradle
+#RUN ./gradlew --version
+#
+## 소스코드 COPY
+#COPY src /usr/src/app/src
+#
+## build 스프링
+#RUN ./gradlew build
+#
+## 실제 jar 파일이 실행되는 런타임 이미지
+#FROM openjdk:17-jre-slim-buster
+#WORKDIR /usr/src/app
+#
+## 빌드된 jar 파일만 이미지화
+#COPY --from=build /usr/src/app/build/libs/hello-Spring-0.0.1-SNAPSHOT.jar app.jar
+#
+#EXPOSE 8080
+#
+#CMD ["java", "-jar", "app.jar"]
+
 # AdoptOpenJDK를 기본 이미지로 사용
 FROM openjdk:17-ea-11-jdk-slim
 
